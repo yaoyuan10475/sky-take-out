@@ -16,6 +16,7 @@ import com.sky.exception.PasswordErrorException;
 import com.sky.mapper.EmployeeMapper;
 import com.sky.result.PageResult;
 import com.sky.service.EmployeeService;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -111,6 +112,24 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void startOrStop(Integer status, Long id) {
         Employee employee = Employee.builder().status(status).id(id).build();
+        employeeMapper.update(employee);
+    }
+
+
+    @Override
+    public Employee getById(Integer id) {
+        return employeeMapper.getById(id);
+    }
+
+    @Override
+    public void update(EmployeeDTO employeeDTO) {
+        Employee employee = new Employee();
+        // 对象属性拷贝
+        BeanUtils.copyProperties(employeeDTO, employee);
+
+        employee.setUpdateUser(BaseContext.getCurrentId());
+        employee.setUpdateTime(LocalDateTime.now());
+
         employeeMapper.update(employee);
     }
 
