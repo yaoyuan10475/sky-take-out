@@ -1,10 +1,12 @@
 package com.sky.controller.admin;
 
+import com.sky.annotation.AutoFill;
 import com.sky.constant.JwtClaimsConstant;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.dto.EmployeePageQueryDTO;
 import com.sky.entity.Employee;
+import com.sky.enumeration.OperationType;
 import com.sky.properties.JwtProperties;
 import com.sky.result.PageResult;
 import com.sky.result.Result;
@@ -81,6 +83,7 @@ public class EmployeeController {
      */
     @PostMapping
     @ApiOperation("新增员工")
+    @AutoFill(OperationType.INSERT)
     public Result save(@RequestBody EmployeeDTO employeeDTO){
         log.info("新增员工：{}", employeeDTO);
 
@@ -98,6 +101,7 @@ public class EmployeeController {
 
     @PostMapping("/status/{status}")
     @ApiOperation("启用禁用员工账号")
+    @AutoFill(OperationType.UPDATE)
     public Result startOrStop(@PathVariable Integer status, Long id){
         log.info("设置员工{}， 状态为{}", id, status);
         employeeService.startOrStop(status, id);
@@ -114,6 +118,7 @@ public class EmployeeController {
 
     @PutMapping
     @ApiOperation("修改员工信息")
+    @AutoFill(OperationType.UPDATE)
     public Result update(@RequestBody EmployeeDTO employeeDTO){
         log.info("修改员工{}", employeeDTO);
         employeeService.update(employeeDTO);

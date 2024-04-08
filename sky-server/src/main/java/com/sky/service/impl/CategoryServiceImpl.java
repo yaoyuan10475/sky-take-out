@@ -97,6 +97,7 @@ public class CategoryServiceImpl implements CategoryService {
      * 修改分类
      * @param categoryDTO
      */
+
     public void update(CategoryDTO categoryDTO) {
         Category category = new Category();
         BeanUtils.copyProperties(categoryDTO,category);
@@ -113,7 +114,7 @@ public class CategoryServiceImpl implements CategoryService {
      * @param status
      * @param id
      */
-    @AutoFill(OperationType.UPDATE)
+
     public void startOrStop(Integer status, Long id) {
         Category category = Category.builder()
                 .id(id)
