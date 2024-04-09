@@ -122,6 +122,12 @@
                 <artifactId>wechatpay-apache-httpclient</artifactId>
                 <version>0.4.8</version>
             </dependency>
+            <!-- 阿里云文件上传-->
+            <dependency>
+                <groupId>com.yy</groupId>
+                <artifactId>aliyun-oss-spring-boot-starter</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

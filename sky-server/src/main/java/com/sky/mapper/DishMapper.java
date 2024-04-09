@@ -7,6 +7,8 @@ import com.sky.entity.Dish;
 import com.sky.entity.DishFlavor;
 import com.sky.enumeration.OperationType;
 import com.sky.vo.DishVO;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -14,6 +16,11 @@ import java.util.List;
 
 @Mapper
 public interface DishMapper {
+
+
+
+    @AutoFill(value = OperationType.INSERT)
+    void insert(Dish dish);
 
     /**
      * 根据分类id查询菜品数量
@@ -30,4 +37,7 @@ public interface DishMapper {
 
     @Select("select * from dish where id=#{id}")
     Dish getById(Long id);
+
+    @Delete("delete from dish where id=#{id}")
+    void deleteById(Long id);
 }

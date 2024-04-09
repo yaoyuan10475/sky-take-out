@@ -1,6 +1,8 @@
 package com.sky.mapper;
 
+import com.sky.annotation.AutoFill;
 import com.sky.entity.DishFlavor;
+import com.sky.enumeration.OperationType;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -20,4 +22,6 @@ public interface FlavorMapper {
     @Insert("insert into dish_flavor(dish_id, name, value) VALUES (#{dishId}, #{name}, #{value})")
     public void insert(DishFlavor dishFlavor);
 
+
+    void insertBatch(List<DishFlavor> flavors);
 }
