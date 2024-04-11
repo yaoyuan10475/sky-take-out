@@ -43,10 +43,10 @@ public class DishController {
     @ApiOperation("菜品分页查询")
     public Result<PageResult> page(DishPageQueryDTO dishPageQueryDTO){
         //service层查询
-        List<Dish> dishes = dishService.page(dishPageQueryDTO);
+       PageResult pageResult = dishService.page(dishPageQueryDTO);
         //整合查询结果
 
-        return Result.success(new PageResult(dishes.size(), dishes));
+        return Result.success(pageResult);
     }
 
     @PutMapping
@@ -64,4 +64,17 @@ public class DishController {
         DishVO dishVO = dishService.getByIdWithFlavor((long)id);
         return Result.success(dishVO);
     }
+
+    /**
+     * 根据分类id查询菜品
+     * @param categoryId
+     * @return
+     */
+    @GetMapping("/list")
+    @ApiOperation("根据分类id查询菜品")
+    public Result<List<Dish>> list(Long categoryId){
+        List<Dish> list = dishService.list(categoryId);
+        return Result.success(list);
+    }
+
 }
