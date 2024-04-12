@@ -1,4 +1,4 @@
-package com.sky.mapper;
+package com.sky.interceptor.mapper;
 
 import com.github.pagehelper.Page;
 import com.sky.dto.SetmealPageQueryDTO;

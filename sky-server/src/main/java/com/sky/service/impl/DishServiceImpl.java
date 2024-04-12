@@ -9,11 +9,11 @@ import com.sky.dto.DishPageQueryDTO;
 import com.sky.entity.Dish;
 import com.sky.entity.DishFlavor;
 import com.sky.exception.DeletionNotAllowedException;
-import com.sky.mapper.DishMapper;
-import com.sky.mapper.FlavorMapper;
-import com.sky.mapper.SetmealMapper;
-import com.sky.result.PageResult;
+import com.sky.interceptor.mapper.DishMapper;
+import com.sky.interceptor.mapper.FlavorMapper;
+import com.sky.interceptor.mapper.SetmealMapper;
 import com.sky.service.DishService;
+import com.sky.result.PageResult;
 import com.sky.vo.DishVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -157,6 +157,15 @@ public class DishServiceImpl implements DishService {
                 .status(StatusConstant.ENABLE)
                 .build();
         return dishMapper.list(dish);
+    }
+
+    @Override
+    public void startOrStop(Integer status, Long id) {
+        Dish dish = Dish.builder()
+                .id(id)
+                .status(status)
+                .build();
+        dishMapper.update(dish);
     }
 
 }

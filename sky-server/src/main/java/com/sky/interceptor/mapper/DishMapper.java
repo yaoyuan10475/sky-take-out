@@ -1,4 +1,4 @@
-package com.sky.mapper;
+package com.sky.interceptor.mapper;
 
 import com.github.pagehelper.Page;
 import com.sky.annotation.AutoFill;
@@ -8,10 +8,7 @@ import com.sky.entity.Dish;
 import com.sky.entity.DishFlavor;
 import com.sky.enumeration.OperationType;
 import com.sky.vo.DishVO;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -51,4 +48,6 @@ public interface DishMapper {
      */
     @Select("select a.* from dish a left join setmeal_dish b on a.id = b.dish_id where b.setmeal_id = #{setmealId}")
     List<Dish> getBySetmealId(Long id);
+
+
 }
