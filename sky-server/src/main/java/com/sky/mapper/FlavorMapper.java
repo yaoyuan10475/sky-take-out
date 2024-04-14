@@ -1,4 +1,4 @@
-package com.sky.interceptor.mapper;
+package com.sky.mapper;
 
 import com.sky.annotation.AutoFill;
 import com.sky.entity.DishFlavor;

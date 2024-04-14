@@ -1,4 +1,4 @@
-package com.sky.interceptor.mapper;
+package com.sky.mapper;
 
 
 import com.sky.entity.User;
