@@ -1,4 +1,4 @@
-package com.sky.controller.user;
+package com.sky.service.impl.user;
 
 import com.sky.constant.StatusConstant;
 import com.sky.entity.Dish;

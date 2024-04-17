@@ -1,4 +1,4 @@
-package com.sky.controller.user;
+package com.sky.service.impl.user;
 
 import com.sky.entity.Category;
 import com.sky.result.Result;

@@ -1,4 +1,4 @@
-package com.sky.controller.user;
+package com.sky.service.impl.user;
 
 import com.sky.dto.OrdersPaymentDTO;
 import com.sky.dto.OrdersSubmitDTO;
@@ -11,6 +11,8 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 @RestController("userOrderController")
 @RequestMapping("/user/order")
@@ -43,5 +45,10 @@ public class OrderController {
         return Result.success(orderPaymentVO);
     }
 
+    @GetMapping("/reminder/{id}")
+    public Result reminder(@PathVariable("id") Long id){
+        orderService.reminder(id);
+        return Result.success();
+    }
 
 }
